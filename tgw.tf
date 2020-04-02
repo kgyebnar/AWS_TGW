@@ -62,12 +62,19 @@ resource "aws_ec2_transit_gateway_vpc_attachment" "vpc-one_tgw_attachment" {
   transit_gateway_default_route_table_propagation ="false"
 }
 
-resource "aws_customer_gateway" "cust_gw" {
-
+resource "aws_customer_gateway" "cust_gw1" {
   bgp_asn    = "2911"
   ip_address = "195.228.45.144"
   type       = "ipsec.1"
+    tags = {
+    Name = "customer_gw"
+    }
+}
 
+resource "aws_customer_gateway" "cust_gw2" {
+  bgp_asn    = "2911"
+  ip_address = "195.228.45.145"
+  type       = "ipsec.1"
     tags = {
     Name = "customer_gw"
     }
@@ -75,7 +82,7 @@ resource "aws_customer_gateway" "cust_gw" {
 
 resource "aws_vpn_connection" "ipsec1" {
   transit_gateway_id = "${aws_ec2_transit_gateway.my-test-tgw.id}"
-  customer_gateway_id = "${aws_customer_gateway.cust_gw.id}"
+  customer_gateway_id = "${aws_customer_gateway.cust_gw1.id}"
   static_routes_only  = "false"
   type                = "ipsec.1"
     tags = {
@@ -86,7 +93,7 @@ resource "aws_vpn_connection" "ipsec1" {
 
 resource "aws_vpn_connection" "ipsec2" {
   transit_gateway_id = "${aws_ec2_transit_gateway.my-test-tgw.id}"
-  customer_gateway_id = "${aws_customer_gateway.cust_gw.id}"
+  customer_gateway_id = "${aws_customer_gateway.cust_gw2.id}"
   static_routes_only  = "false"
     type                = "ipsec.1"
     tags = {
