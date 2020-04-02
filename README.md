@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # AWS DEMO
 This is a basic TF Template for 
  - VPC creation 
@@ -10,3 +11,7 @@ This is a basic TF Template for
  - the first instance is provisioned via file and remote-exec provisioner
 
 - work in progress
+=======
+# AWS_TGW
+AWS Transit Gateway playground
+>>>>>>> 45d81778b88749600e5832c2d249f0605f4cc03d
