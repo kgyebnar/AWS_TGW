@@ -1,17 +1,18 @@
-<<<<<<< HEAD
-# AWS DEMO
+# AWS TGW Playground
 This is a basic TF Template for 
  - VPC creation 
- - 2 UBUNTU Instance in 2 AZ 
+ - TGW Creation
+ - TGW route table creation
+ - TGW VPC and VPN tunnel associations
+ - TGW private route table associations to VPC and VPN attachments
  - 2 security group 
  - 2 public + 2 private subnet
- - 2 routing table (MAIN, PRIVATE)
- - internet GW with 2 subnets attached for redundancy
- - VPN GW with 2 private subnet for redundancy
- - the first instance is provisioned via file and remote-exec provisioner
+ - 2 routing table (Main,PRIVATE)
+ - VPN GW with 2 private subnet
+ - vpn connection (2x IPsec) to On-prem connectivity
+ - AWS Customer gateway creation
 
 - work in progress
 =======
 # AWS_TGW
 AWS Transit Gateway playground
->>>>>>> 45d81778b88749600e5832c2d249f0605f4cc03d
