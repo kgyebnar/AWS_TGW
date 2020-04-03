@@ -1,6 +1,6 @@
 # AWS TGW Playground
 This is a basic TF Template for 
- - VPC creation 
+ - VPC creation (+ innstances)
  - TGW Creation
  - TGW route table creation
  - TGW VPC and VPN tunnel associations
@@ -11,8 +11,4 @@ This is a basic TF Template for
  - VPN GW with 2 private subnet
  - vpn connection (2x IPsec) to On-prem connectivity
  - AWS Customer gateway creation
-
-- work in progress
-=======
-# AWS_TGW
-AWS Transit Gateway playground
+ - 4byte ASN for TGW and VGW
