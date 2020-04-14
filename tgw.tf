@@ -8,6 +8,7 @@ resource "aws_ec2_transit_gateway" "my-test-tgw" {
   dns_support                     = "enable"
   vpn_ecmp_support                = "enable"
   tags {
+    Env =  "AWS_native"
     Name = "my-test-transit-gateway"
   }
 }
@@ -16,6 +17,7 @@ resource "aws_ec2_transit_gateway" "my-test-tgw" {
 resource "aws_ec2_transit_gateway_route_table" "private_table1" {
   transit_gateway_id = "${aws_ec2_transit_gateway.my-test-tgw.id}"
 tags = {
+    Env =  "AWS_native"
     Name = "private-1"
   }
 }
@@ -74,6 +76,7 @@ resource "aws_ec2_transit_gateway_vpc_attachment" "vpc-one_tgw_attachment" {
   transit_gateway_default_route_table_association ="false"
   transit_gateway_default_route_table_propagation ="false"
     tags = {
+    Env =  "AWS_native"
     Name = "main"
     }
 }
@@ -86,6 +89,7 @@ resource "aws_ec2_transit_gateway_vpc_attachment" "vpc-shared_tgw_attachment" {
   transit_gateway_default_route_table_association ="false"
   transit_gateway_default_route_table_propagation ="false"
     tags = {
+    Env =  "AWS_native"
     Name = "shared"
     }
 }
@@ -95,6 +99,7 @@ resource "aws_customer_gateway" "cust_gw1" {
   ip_address = "195.228.45.146"
   type       = "ipsec.1"
     tags = {
+    Env =  "AWS_native"
     Name = "customer_gw"
     }
 }
@@ -104,6 +109,7 @@ resource "aws_customer_gateway" "cust_gw2" {
   ip_address = "195.228.45.146"
   type       = "ipsec.1"
     tags = {
+    Env =  "AWS_native"
     Name = "customer_gw"
     }
 }
@@ -116,6 +122,7 @@ resource "aws_vpn_connection" "ipsec1" {
   tunnel2_inside_cidr = "${var.tun1_cidr2}"
   type                = "ipsec.1"
     tags = {
+    Env =  "AWS_native"
     Name = "vpn_connection1"
     }
 }
@@ -129,6 +136,7 @@ resource "aws_vpn_connection" "ipsec2" {
   tunnel2_inside_cidr = "${var.tun2_cidr2}"
     type                = "ipsec.1"
     tags = {
+    Env =  "AWS_native"
     Name = "vpn_connection2"
     }
 }

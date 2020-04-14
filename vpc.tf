@@ -6,6 +6,7 @@ resource "aws_vpc" "main" {
     enable_dns_hostnames = "true"
     enable_classiclink = "false"
     tags {
+        Env = "AWS_native"
         Name = "main"
     }
 }
@@ -17,6 +18,7 @@ resource "aws_vpc" "shared" {
     enable_dns_hostnames = "true"
     enable_classiclink = "false"
     tags {
+        Env = "AWS_native"
         Name = "main"
     }
 }
@@ -50,6 +52,7 @@ resource "aws_subnet" "main-private-1" {
     availability_zone = "eu-central-1a"
 
     tags {
+        Env = "AWS_native"
         Name = "main-private-1"
     }
 }
@@ -60,6 +63,7 @@ resource "aws_subnet" "main-private-2" {
     availability_zone = "eu-central-1b"
 
     tags {
+        Env = "AWS_native"
         Name = "main-private-2"
     }
 }
@@ -71,6 +75,7 @@ resource "aws_subnet" "shared-private-1" {
     availability_zone = "eu-central-1a"
 
     tags {
+        Env = "AWS_native"
         Name = "shared-private-1"
     }
 }
@@ -110,6 +115,7 @@ resource "aws_subnet" "shared-private-2" {
 resource "aws_vpn_gateway" "vpn" {
 amazon_side_asn = "4294967292"
   tags = {
+    Env = "AWS_native"
     Name = "main-vpn-gateway"
   }
 }
@@ -122,6 +128,7 @@ resource "aws_vpn_gateway_attachment" "vpn_attachment" {
 resource "aws_vpn_gateway" "shared_vpn" {
 amazon_side_asn = "4294967293"
   tags = {
+    Env = "AWS_native"
     Name = "shared-vpn-gateway"
   }
 }
@@ -141,6 +148,7 @@ resource "aws_route_table" "main-private" {
         gateway_id = "${aws_vpn_gateway.vpn.id}"
     }
     tags {
+        Env = "AWS_native"
         Name = "main-private-1"
     }
 }
@@ -154,6 +162,7 @@ resource "aws_route_table" "shared-private" {
         gateway_id = "${aws_vpn_gateway.shared_vpn.id}"
     }
     tags {
+        Env = "AWS_native"
         Name = "shared-private-1"
     }
 }

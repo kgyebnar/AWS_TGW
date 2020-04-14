@@ -39,6 +39,7 @@ resource "aws_security_group" "allow-filters" {
 
 
 tags {
+    Env = "AWS_native"
     Name = "allow-ssh-http"
   }
 
@@ -64,6 +65,7 @@ resource "aws_security_group" "allow-filters2" {
   } 
 
 tags {
+    Env = "AWS_native"
     Name = "allow-ssh-only"
   }
 
