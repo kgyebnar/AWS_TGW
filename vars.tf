@@ -32,9 +32,34 @@ default = "10.0.1.0/24"
 variable "priv2_cidr" {
 default = "10.0.2.0/24"
 }
+variable "shared_priv1_cidr" {
+default = "10.40.22.0/25"
+}
+variable "shared_priv2_cidr" {
+default = "10.40.22.128/25"
+}
+
+variable "shared_vpc_cidr" {
+default = "10.40.22.0/24"
+}
+
 variable "vpc_cidr" {
 default = "10.0.0.0/22"
 }
+
+variable "tun1_cidr1" {
+default = "169.254.255.0/30"
+}
+variable "tun1_cidr2" {
+default = "169.254.255.4/30"
+}
+variable "tun2_cidr1" {
+default = "169.254.255.8/30"
+}
+variable "tun2_cidr2" {
+default = "169.254.255.12/30"
+}
+
 
 
 variable "vpn_gw_id" {
