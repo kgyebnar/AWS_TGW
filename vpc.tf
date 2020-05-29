@@ -112,31 +112,31 @@ resource "aws_subnet" "shared-private-2" {
 #    }
 #}
 
-resource "aws_vpn_gateway" "vpn" {
-amazon_side_asn = "4294967292"
-  tags = {
-    Env = "AWS_native"
-    Name = "main-vpn-gateway"
-  }
-}
+#resource "aws_vpn_gateway" "vpn" {
+#amazon_side_asn = "4294967292"
+#  tags = {
+#    Env = "AWS_native"
+#    Name = "main-vpn-gateway"
+#  }
+#}
 
-resource "aws_vpn_gateway_attachment" "vpn_attachment" {
-  vpc_id         = "${aws_vpc.main.id}"
-  vpn_gateway_id = "${aws_vpn_gateway.vpn.id}"
-}
+#resource "aws_vpn_gateway_attachment" "vpn_attachment" {
+#  vpc_id         = "${aws_vpc.main.id}"
+#  vpn_gateway_id = "${aws_vpn_gateway.vpn.id}"
+#}
 
-resource "aws_vpn_gateway" "shared_vpn" {
-amazon_side_asn = "4294967293"
-  tags = {
-    Env = "AWS_native"
-    Name = "shared-vpn-gateway"
-  }
-}
+#resource "aws_vpn_gateway" "shared_vpn" {
+#amazon_side_asn = "4294967293"
+#  tags = {
+#    Env = "AWS_native"
+#    Name = "shared-vpn-gateway"
+#  }
+#}
 
-resource "aws_vpn_gateway_attachment" "shared_vpn_attachment" {
-  vpc_id         = "${aws_vpc.shared.id}"
-  vpn_gateway_id = "${aws_vpn_gateway.shared_vpn.id}"
-}
+#resource "aws_vpn_gateway_attachment" "shared_vpn_attachment" {
+#  vpc_id         = "${aws_vpc.shared.id}"
+#  vpn_gateway_id = "${aws_vpn_gateway.shared_vpn.id}"
+#}
 
 
 
@@ -145,7 +145,8 @@ resource "aws_route_table" "main-private" {
     vpc_id = "${aws_vpc.main.id}"
     route {
         cidr_block = "${var.vpn_cidr}"
-        gateway_id = "${aws_vpn_gateway.vpn.id}"
+#        gateway_id = "${aws_vpn_gateway.vpn.id}"
+        gateway_id = "${aws_ec2_transit_gateway.my-test-tgw.id}"
     }
     tags {
         Env = "AWS_native"
@@ -159,7 +160,8 @@ resource "aws_route_table" "shared-private" {
     vpc_id = "${aws_vpc.shared.id}"
     route {
         cidr_block = "${var.vpn_cidr}"
-        gateway_id = "${aws_vpn_gateway.shared_vpn.id}"
+#        gateway_id = "${aws_vpn_gateway.shared_vpn.id}"
+        gateway_id = "${aws_ec2_transit_gateway.my-test-tgw.id}"
     }
     tags {
         Env = "AWS_native"
